@@ -10,8 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.ercin.moviesapp.R
 import com.ercin.moviesapp.ui.main.MovieAdapter
+import com.ercin.moviesapp.ui.main.MovieAdapterNavigatorInterface
 
-class PopularMoviesFragment : Fragment(), PopularMoviesNavigator {
+class PopularMoviesFragment : Fragment(), MovieAdapterNavigatorInterface {
 
     lateinit var viewModel: PopularMoviesViewModel
     var rv: RecyclerView? = null

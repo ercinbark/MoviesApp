@@ -25,11 +25,11 @@ class MovieAdapter(var movies: MutableLiveData<List<MovieResult>>) : RecyclerVie
         holder.binding.movie = movie
     }
 
-    fun observe() {
+    class MovieViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root)
+
+    fun dataChangeObserve() {
         movies.observeForever {
             notifyDataSetChanged()
         }
     }
-
-    class MovieViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root)
 }
