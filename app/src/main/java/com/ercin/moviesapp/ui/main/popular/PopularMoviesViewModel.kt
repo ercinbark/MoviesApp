@@ -9,17 +9,17 @@ import com.ercin.moviesapp.ui.main.MovieAdapterNavigatorInterface
 class PopularMoviesViewModel : ViewModel() {
 
     private val repository: MainRepository by lazy { MainRepository() }
-    private lateinit var navigator: MovieAdapterNavigatorInterface
+    private lateinit var navigatorInterface: MovieAdapterNavigatorInterface
     val moviesAdapter: MovieAdapter = MovieAdapter(MutableLiveData())
 
     fun updateAdapter() {
-        navigator.setAdapter(moviesAdapter)
         moviesAdapter.movies = repository.getPopularMoviesList()
+        navigatorInterface.setMovieAdapter(moviesAdapter)
         moviesAdapter.dataChangeObserve()
     }
 
     fun setNavigator(nav: MovieAdapterNavigatorInterface) {
-        this.navigator = nav
+        this.navigatorInterface = nav
     }
 
 }

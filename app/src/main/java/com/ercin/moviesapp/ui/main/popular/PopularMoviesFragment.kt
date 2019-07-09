@@ -30,7 +30,7 @@ class PopularMoviesFragment : Fragment(), MovieAdapterNavigatorInterface {
 
     }
 
-    override fun setAdapter(adapter: MovieAdapter) {
+    override fun setMovieAdapter(adapter: MovieAdapter) {
         rv?.layoutManager = GridLayoutManager(context, 2)
         rv?.adapter = adapter
     }

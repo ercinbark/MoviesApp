@@ -1,5 +1,5 @@
 package com.ercin.moviesapp.ui.main
 
 interface MovieAdapterNavigatorInterface {
-    fun setAdapter(adapter: MovieAdapter)
+    fun setMovieAdapter(adapter: MovieAdapter)
 }
