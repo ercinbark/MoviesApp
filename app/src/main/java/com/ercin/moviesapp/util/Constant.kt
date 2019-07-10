@@ -3,6 +3,7 @@ package com.ercin.moviesapp.util
 object Constant {
     const val BASE_URL="https://api.themoviedb.org/3/"
     const val API_KEY="fa9bfc0f4bd5e29db305c69aa1a21f9c"
+    const val TEST_MOVIE_ID="429617"
 
     const val IMAGE_BASE_URL="https://image.tmdb.org/t/p/"
     const val IMAGE_W92="w92"

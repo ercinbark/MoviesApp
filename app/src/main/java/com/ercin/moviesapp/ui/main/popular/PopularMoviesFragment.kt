@@ -1,14 +1,17 @@
 package com.ercin.moviesapp.ui.main.popular
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ercin.moviesapp.R
+import com.ercin.moviesapp.ui.detail.MovieDetailActivity
 import com.ercin.moviesapp.ui.main.MovieAdapter
 import com.ercin.moviesapp.ui.main.MovieAdapterNavigatorInterface
 
@@ -33,5 +36,12 @@ class PopularMoviesFragment : Fragment(), MovieAdapterNavigatorInterface {
     override fun setMovieAdapter(adapter: MovieAdapter) {
         rv?.layoutManager = GridLayoutManager(context, 2)
         rv?.adapter = adapter
+    }
+
+    override fun goToMovieID(movieId: Int) {
+        Log.e("comeID", movieId.toString())
+        val intent = Intent(activity, MovieDetailActivity::class.java)
+        intent.putExtra("movieID", movieId)
+        startActivity(intent)
     }
 }

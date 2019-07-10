@@ -10,7 +10,10 @@ class PopularMoviesViewModel : ViewModel() {
 
     private val repository: MainRepository by lazy { MainRepository() }
     private lateinit var navigatorInterface: MovieAdapterNavigatorInterface
-    val moviesAdapter: MovieAdapter = MovieAdapter(MutableLiveData())
+
+    val moviesAdapter: MovieAdapter = MovieAdapter(MutableLiveData()) { movieId, movie ->
+        navigatorInterface.goToMovieID(movieId)
+    }
 
     fun updateAdapter() {
         moviesAdapter.movies = repository.getPopularMoviesList()
