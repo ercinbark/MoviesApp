@@ -6,7 +6,7 @@
 
     <data>
 
-        <variable name="movie" type="com.ercin.moviesapp.model.movie.MovieResult"/>
+        <variable name="movie" type="com.ercin.movies.model.movie.MovieResult"/>
     </data>
     <android.support.design.card.MaterialCardView
             android:layout_width="match_parent"
