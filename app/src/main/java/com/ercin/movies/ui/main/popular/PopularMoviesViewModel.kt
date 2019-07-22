@@ -11,7 +11,7 @@ class PopularMoviesViewModel : ViewModel() {
     private val repository: MainRepository by lazy { MainRepository() }
     private lateinit var navigatorInterface: MovieAdapterNavigatorInterface
 
-    val moviesAdapter: MovieAdapter = MovieAdapter(MutableLiveData()) { movieId, movie ->
+    /*val moviesAdapter: MovieAdapter = MovieAdapter(MutableLiveData()) { movieId, movie ->
         navigatorInterface.goToMovieID(movieId)
     }
 
@@ -23,6 +23,6 @@ class PopularMoviesViewModel : ViewModel() {
 
     fun setNavigator(nav: MovieAdapterNavigatorInterface) {
         this.navigatorInterface = nav
-    }
+    }*/
 
 }

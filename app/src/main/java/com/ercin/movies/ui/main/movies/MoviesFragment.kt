@@ -1,4 +1,4 @@
-package com.ercin.movies.ui.main.popular
+package com.ercin.movies.ui.main.movies
 
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
@@ -12,36 +12,36 @@ import android.view.View
 import android.view.ViewGroup
 import com.ercin.movies.R
 import com.ercin.movies.ui.detail.MovieDetailActivity
+import com.ercin.movies.ui.main.MainActivity
 import com.ercin.movies.ui.main.MovieAdapter
-import com.ercin.movies.ui.main.MovieAdapterNavigatorInterface
+import kotlinx.android.synthetic.main.fragment_movies.*
 
-class PopularMoviesFragment : Fragment(), MovieAdapterNavigatorInterface {
+class MoviesFragment : Fragment(), PopularMovieAdapterNavigatorInterface {
 
-    lateinit var viewModel: PopularMoviesViewModel
+    lateinit var viewModel: MoviesViewModel
     var rv: RecyclerView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewModel = ViewModelProviders.of(this).get(PopularMoviesViewModel::class.java)
-       // viewModel.setNavigator(this)
-        return inflater.inflate(R.layout.fragment_popular_movies, container, false)
+        viewModel = ViewModelProviders.of(this).get(MoviesViewModel::class.java)
+        viewModel.setNavigator(this)
+        return inflater.inflate(R.layout.fragment_movies, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rv = view.findViewById(R.id.recyclerView)
-        //viewModel.updateAdapter()
-
+        rv=view.findViewById(R.id.rc_popular)
+        viewModel.requestPopularMovies()
     }
 
-    override fun setMovieAdapter(adapter: MovieAdapter) {
+    override fun setAdapter(adapter: MovieAdapter) {
         rv?.layoutManager = GridLayoutManager(context, 2)
         rv?.adapter = adapter
     }
 
-    override fun goToMovieID(movieId: Int) {
-        Log.e("comeID", movieId.toString())
+    override fun goToMovieID(moveiID: Int) {
+        Log.e("comeID", moveiID.toString())
         val intent = Intent(activity, MovieDetailActivity::class.java)
-        intent.putExtra("movieID", movieId)
+        intent.putExtra("movieID", moveiID)
         startActivity(intent)
     }
 }

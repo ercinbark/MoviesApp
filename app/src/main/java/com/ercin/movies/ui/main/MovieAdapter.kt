@@ -9,8 +9,9 @@ import com.ercin.movies.R
 import com.ercin.movies.databinding.ItemMovieBinding
 import com.ercin.movies.model.movie.MovieResult
 
-class MovieAdapter(var movies: MutableLiveData<List<MovieResult>>, val clickFunction: (Int, MovieResult?) -> Unit ) :
+class MovieAdapter(val clickFunction: (Int, MovieResult?) -> Unit ) :
     RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+    var movies: List<MovieResult> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val binding = DataBindingUtil.inflate<ItemMovieBinding>(LayoutInflater.from(parent.context), R.layout.item_movie, parent, false)
@@ -18,23 +19,24 @@ class MovieAdapter(var movies: MutableLiveData<List<MovieResult>>, val clickFunc
     }
 
     override fun getItemCount(): Int {
-        return movies.value?.size ?: 0
+        return movies.size ?: 0
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie = movies.value?.get(position)
+        val movie = movies.get(position)
         holder.binding.movie = movie
 
         holder.binding.itemMoviePoster.setOnClickListener {
-            clickFunction(movie?.movieId ?:0, movie)
+            clickFunction(movie.movieId ?:0, movie)
         }
     }
 
     class MovieViewHolder(val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root)
 
-    fun dataChangeObserve() {
-        movies.observeForever {
+    /*fun dataChangeObserve() {
+        movies {
             notifyDataSetChanged()
         }
-    }
+    }*/
 }
+
