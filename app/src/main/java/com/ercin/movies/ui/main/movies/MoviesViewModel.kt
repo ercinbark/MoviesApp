@@ -1,16 +1,17 @@
 package com.ercin.movies.ui.main.movies
 
-import android.arch.lifecycle.ViewModel
 import android.util.Log
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ercin.movies.data.remote.ApiClient
-import com.ercin.movies.model.movie.MovieResponse
+import com.ercin.movies.data.remote.ApiService
 import com.ercin.movies.model.movie.MovieResult
 import com.ercin.movies.ui.main.MovieAdapter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlin.math.log
 
-class MoviesViewModel : ViewModel() {
+class MoviesViewModel() : ViewModel() {
 
     lateinit var popularMovieNavigatorInterface: PopularMovieAdapterNavigatorInterface
 
@@ -18,19 +19,12 @@ class MoviesViewModel : ViewModel() {
         popularMovieNavigatorInterface.goToMovieID(moveId)
     }
 
-    fun requestPopularMovies() {
-        ApiClient.getApiService().getPopularMovies().enqueue(object : Callback<MovieResponse> {
-            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                Log.e("Resp", t.message)
-            }
-
-            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-                Log.e("Resp", response.body().toString())
-                popularMoviesAdapter.movies=response.body()?.results!!
-                popularMovieNavigatorInterface.setAdapter(popularMoviesAdapter)
-
-            }
-        })
+    fun requestPopularMovies() = viewModelScope.launch {
+        Log.e("XXXX","startReq")
+        popularMoviesAdapter.movies =ApiClient.getApiService().getPopularMovies().results
+        popularMovieNavigatorInterface.setAdapter(popularMoviesAdapter)
+        Log.e("XXXX",popularMoviesAdapter.movies.toString())
+        Log.e("XXXX","finishReq")
     }
 
     fun setNavigator(nav: PopularMovieAdapterNavigatorInterface) {

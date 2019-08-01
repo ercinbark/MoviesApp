@@ -12,7 +12,7 @@ interface ApiService {
 
     //Popular
     @GET("movie/popular")
-    fun getPopularMovies(): Call<MovieResponse>
+    suspend fun getPopularMovies(): MovieResponse
 
     //TopRated
     @GET("movie/top_rated")

@@ -1,6 +1,6 @@
 package com.ercin.movies.ui.main
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import android.util.Log
 import com.ercin.movies.data.remote.ApiClient
 import com.ercin.movies.data.remote.ApiService
@@ -15,15 +15,15 @@ class MainRepository {
 
     fun getPopularMoviesList(): MutableLiveData<List<MovieResult>> { val moviesLiveData: MutableLiveData<List<MovieResult>> = MutableLiveData()
 
-        apiService.getPopularMovies().enqueue(object : Callback<MovieResponse> {
-            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
-                Log.e("getPopularMovies", t.message)
-            }
-
-            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
-                moviesLiveData.value = response.body()?.results
-            }
-        })
+//        apiService.getPopularMovies().enqueue(object : Callback<MovieResponse> {
+//            override fun onFailure(call: Call<MovieResponse>, t: Throwable) {
+//                Log.e("getPopularMovies", t.message)
+//            }
+//
+//            override fun onResponse(call: Call<MovieResponse>, response: Response<MovieResponse>) {
+//                moviesLiveData.value = response.body()?.results
+//            }
+//        })
 
         return moviesLiveData
     }

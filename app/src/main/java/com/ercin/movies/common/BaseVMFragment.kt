@@ -1,11 +1,11 @@
 package com.ercin.movies.common
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 
-abstract class BaseVMFragment<VM:ViewModel>:Fragment() {
+abstract class BaseVMFragment<VM:ViewModel>: Fragment() {
 
     lateinit var viewModel: VM
 

@@ -8,7 +8,7 @@
 
         <variable name="movie" type="com.ercin.movies.model.movie.MovieResult"/>
     </data>
-    <android.support.design.card.MaterialCardView
+    <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
@@ -22,7 +22,7 @@
                     android:id="@+id/item_movie_poster" android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/no_poster"
+                    app:srcCompat="@drawable/no_poster"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:focusable="true"
@@ -53,5 +53,5 @@
                     android:textStyle="bold"
                     android:text="@{String.valueOf(movie.vote_average)}"/>
         </RelativeLayout>
-    </android.support.design.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

@@ -1,16 +1,15 @@
 package com.ercin.movies.ui.main
 
-import android.arch.lifecycle.MutableLiveData
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.RecyclerView
+import androidx.lifecycle.MutableLiveData
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.ercin.movies.R
 import com.ercin.movies.databinding.ItemMovieBinding
 import com.ercin.movies.model.movie.MovieResult
 
-class MovieAdapter(val clickFunction: (Int, MovieResult?) -> Unit ) :
-    RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(val clickFunction: (Int, MovieResult?) -> Unit ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     var movies: List<MovieResult> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {

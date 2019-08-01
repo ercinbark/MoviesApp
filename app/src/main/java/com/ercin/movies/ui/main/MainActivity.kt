@@ -1,13 +1,13 @@
 package com.ercin.movies.ui.main
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
 import android.view.MenuItem
 import com.ercin.movies.R
 import com.ercin.movies.common.ViewPagerAdapte
@@ -97,21 +97,20 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     inner class MainViewPager(fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager) {
         val TAB_ITEMS = 3
-        override fun getItem(tab_position: Int): Fragment? {
+        override fun getItem(tab_position: Int): Fragment {
             return when (tab_position) {
                 0 -> {
                     moviesFragment = MoviesFragment()
-                    return moviesFragment
+                    moviesFragment
                 }
                 1 -> {
                     newsFragment = NewsFragment()
-                    return newsFragment
+                    newsFragment
                 }
-                2 -> {
+                else -> {
                     profileFragment = ProfileFragment()
-                    return profileFragment
+                    profileFragment
                 }
-                else -> null
             }
         }
 

@@ -1,6 +1,6 @@
 package com.ercin.movies.ui.detail
 
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.ViewModel
 import com.ercin.movies.data.remote.ApiClient
 import com.ercin.movies.model.detail.MovieDetailResponse
 import retrofit2.Call

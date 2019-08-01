@@ -1,11 +1,11 @@
 package com.ercin.movies.ui.detail
 
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
+import androidx.databinding.DataBindingUtil
 import android.graphics.BitmapFactory
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.graphics.Palette
+import androidx.palette.graphics.Palette
 import android.util.Log
 import android.view.View
 import com.bumptech.glide.Glide

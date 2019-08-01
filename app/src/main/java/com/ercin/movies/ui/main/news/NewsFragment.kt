@@ -1,13 +1,13 @@
 package com.ercin.movies.ui.main.news
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ercin.movies.R
 
-class NewsFragment :Fragment() {
+class NewsFragment : Fragment() {
 
     lateinit var viewModel:NewsViewModel
 
