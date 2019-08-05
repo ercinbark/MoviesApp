@@ -3,6 +3,7 @@ package com.ercin.movies.ui.main.movies
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ercin.movies.base.BaseViewModel
 import com.ercin.movies.data.remote.ApiClient
 import com.ercin.movies.data.remote.ApiService
 import com.ercin.movies.model.movie.MovieResult
@@ -11,7 +12,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlin.math.log
 
-class MoviesViewModel() : ViewModel() {
+class MovieListViewModel() : BaseViewModel() {
 
     lateinit var popularMovieNavigatorInterface: PopularMovieAdapterNavigatorInterface
 
@@ -21,9 +22,8 @@ class MoviesViewModel() : ViewModel() {
 
     fun requestPopularMovies() = viewModelScope.launch {
         Log.e("XXXX","startReq")
-        popularMoviesAdapter.movies =ApiClient.getApiService().getPopularMovies().results
+        popularMoviesAdapter.movies =ApiClient.getApiService().getPopularMovies(deviceUtils.local).results
         popularMovieNavigatorInterface.setAdapter(popularMoviesAdapter)
-        Log.e("XXXX",popularMoviesAdapter.movies.toString())
         Log.e("XXXX","finishReq")
     }
 
