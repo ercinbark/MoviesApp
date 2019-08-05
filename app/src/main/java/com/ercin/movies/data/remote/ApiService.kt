@@ -7,12 +7,13 @@ import com.ercin.movies.model.videos.MovieVideoResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
     //Popular
     @GET("movie/popular")
-    suspend fun getPopularMovies(): MovieResponse
+    suspend fun getPopularMovies(@Query("language") language: String): MovieResponse
 
     //TopRated
     @GET("movie/top_rated")
@@ -20,14 +21,14 @@ interface ApiService {
 
     //MovieDetail
     @GET("movie/{id}")
-    fun getMovieDetails(@Path("id")movieId:Int):Call<MovieDetailResponse>
+    fun getMovieDetails(@Path("id") movieId: Int, @Query("language") language: String): Call<MovieDetailResponse>
 
     //Videos
     @GET("movie/{id}/videos")
-    fun getMovieVideos(@Path("id")movieId: Int):Call<MovieVideoResponse>
+    fun getMovieVideos(@Path("id") movieId: Int): Call<MovieVideoResponse>
 
     //Reviews
     @GET("movie/{id}/reviews")
-    fun getMovieRewiews(@Path("id")movieId: Int):Call<MovieReviewResponse>
+    fun getMovieRewiews(@Path("id") movieId: Int): Call<MovieReviewResponse>
 
 }

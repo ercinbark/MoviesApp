@@ -6,16 +6,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import android.view.MenuItem
 import com.ercin.movies.R
-import com.ercin.movies.common.ViewPagerAdapte
 import com.ercin.movies.ui.main.movies.MoviesFragment
 import com.ercin.movies.ui.main.news.NewsFragment
-import com.ercin.movies.ui.main.popular.PopularMoviesFragment
 import com.ercin.movies.ui.main.profile.ProfileFragment
-import com.ercin.movies.ui.main.toprated.TopRatedMoviesFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
