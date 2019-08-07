@@ -1,33 +1,37 @@
 package com.ercin.movies.ui.main.movies
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.ercin.movies.base.BaseViewModel
-import com.ercin.movies.data.remote.ApiClient
-import com.ercin.movies.data.remote.ApiService
-import com.ercin.movies.model.movie.MovieResult
 import com.ercin.movies.ui.main.MovieAdapter
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
-class MovieListViewModel() : BaseViewModel() {
+
+class MovieListViewModel : BaseViewModel() {
 
     lateinit var popularMovieNavigatorInterface: PopularMovieAdapterNavigatorInterface
+    val loading = MutableLiveData<Boolean>().apply { value = false }
 
     val popularMoviesAdapter = MovieAdapter { moveId, movie ->
-        popularMovieNavigatorInterface.goToMovieID(moveId)
+        popularMovieNavigatorInterface.goToMovieDetail(moveId)
     }
 
     fun requestPopularMovies() = viewModelScope.launch {
-        Log.e("XXXX","startReq")
-        popularMoviesAdapter.movies =ApiClient.getApiService().getPopularMovies(deviceUtils.local).results
+        Log.e("XXXX", "startReq")
+
+        loading.value = true
+
+        popularMoviesAdapter.movies = mainRepository.getPopularMovies()
         popularMovieNavigatorInterface.setAdapter(popularMoviesAdapter)
-        Log.e("XXXX","finishReq")
+        Log.e("XXXX", "finishReq")
+
+        loading.value = false
+
     }
 
     fun setNavigator(nav: PopularMovieAdapterNavigatorInterface) {
         this.popularMovieNavigatorInterface = nav
     }
+
 }

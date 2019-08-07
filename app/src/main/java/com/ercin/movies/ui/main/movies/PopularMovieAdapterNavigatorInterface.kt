@@ -4,5 +4,5 @@ import com.ercin.movies.ui.main.MovieAdapter
 
 interface PopularMovieAdapterNavigatorInterface {
     fun setAdapter(adapter:MovieAdapter)
-    fun goToMovieID(moveiID:Int)
+    fun goToMovieDetail(moveiID:Int)
 }
