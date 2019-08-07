@@ -9,12 +9,13 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import android.view.MenuItem
 import com.ercin.movies.R
+import com.ercin.movies.base.BaseActivity
 import com.ercin.movies.ui.main.movies.MoviesFragment
 import com.ercin.movies.ui.main.news.NewsFragment
 import com.ercin.movies.ui.main.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : BaseActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     val TAB_MOVIES = 0
     val TAB_NEWS = 1
