@@ -1,34 +1,29 @@
 package com.ercin.movies.ui.detail
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.ercin.movies.base.BaseViewModel
-import com.ercin.movies.data.remote.ApiClient
 import com.ercin.movies.model.detail.MovieDetailResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.launch
 
-class MovieDetailViewModel(var movieId:Int) : BaseViewModel() {
+class MovieDetailViewModel(var movieId: Int) : BaseViewModel() {
 
-    var apiService = ApiClient.getApiService()
-    lateinit var movieDetaiResponse: MovieDetailResponse
+    val loading = MutableLiveData<Boolean>().apply { value = false }
+    lateinit var movieDetailResponse: MovieDetailResponse
     private lateinit var navigatorDetailInterface: MovieDetailNavigatorInterface
 
-    fun requestMovieDetail() {
-        Log.e("XXXX", deviceUtils.locale.toString())
-        apiService.getMovieDetails(movieId, deviceUtils.local)
-            .enqueue(object : Callback<MovieDetailResponse> {
-                override fun onFailure(call: Call<MovieDetailResponse>, t: Throwable) {
+    fun requestMovieDetail() = viewModelScope.launch {
+        Log.e("XXXX", "startReqMovieDetail")
 
-                }
+        loading.value = true
 
-                override fun onResponse(call: Call<MovieDetailResponse>, response: Response<MovieDetailResponse>) {
-                    if (response.body() != null) {
-                        movieDetaiResponse = response.body()!!
-                        navigatorDetailInterface.showMovieDetail(movieDetaiResponse)
-                    }
-                }
-            })
+        movieDetailResponse = mainRepository.getMovieDetail(movieId)
+        navigatorDetailInterface.showMovieDetail(movieDetailResponse)
+        Log.e("XXXX", "finishReqMovieDetail")
+
+        loading.value = false
+
     }
 
     fun setDetailNavigator(nav: MovieDetailNavigatorInterface) {

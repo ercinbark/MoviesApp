@@ -6,7 +6,7 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.ercin.movies.widget.LoadingDialog
 
-open class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
     private var loadingDialog: LoadingDialog? = null
 

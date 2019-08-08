@@ -14,7 +14,7 @@ data class MovieDetailResponse(
     @SerializedName("release_date")
     var release_date: String,
     @SerializedName("title")
-    var titlee: String,
+    var title: String,
     @SerializedName("video")
     var video: Boolean,
     @SerializedName("vote_average")

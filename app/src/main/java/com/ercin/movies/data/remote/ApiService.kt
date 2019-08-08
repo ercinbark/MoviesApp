@@ -15,13 +15,13 @@ interface ApiService {
     @GET("movie/popular")
     suspend fun getPopularMovies(@Query("language") language: String): MovieResponse
 
+    //MovieDetail
+    @GET("movie/{id}")
+    suspend fun getMovieDetails(@Path("id") movieId: Int, @Query("language") language: String): MovieDetailResponse
+
     //TopRated
     @GET("movie/top_rated")
     fun getTopRatedMovies(): Call<MovieResponse>
-
-    //MovieDetail
-    @GET("movie/{id}")
-    fun getMovieDetails(@Path("id") movieId: Int, @Query("language") language: String): Call<MovieDetailResponse>
 
     //Videos
     @GET("movie/{id}/videos")
