@@ -26,7 +26,7 @@ class MoviesFragment : BaseFragment(), MovieListAdapterNavigatorInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        myMoviesViewModel.requestPopularMovies()
+        myMoviesViewModel.requestMovieList()
         myMoviesViewModel.loading.observe(viewLifecycleOwner,androidx.lifecycle.Observer<Boolean>{
             if (it)
                 getBaseActivity().showFullScreenProgressDialog(false)

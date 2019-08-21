@@ -17,7 +17,7 @@ class MovieListViewModel : BaseViewModel() {
         popularMovieNavigatorInterface.goToMovieDetail(moveId)
     }
 
-    fun requestPopularMovies() = viewModelScope.launch {
+    fun requestMovieList() = viewModelScope.launch {
         Log.e("XXXX", "startReqMovieList")
 
         loading.value = true
