@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class MovieListViewModel : BaseViewModel() {
 
-    lateinit var popularMovieNavigatorInterface: PopularMovieAdapterNavigatorInterface
+    lateinit var popularMovieNavigatorInterface: MovieListAdapterNavigatorInterface
     val loading = MutableLiveData<Boolean>().apply { value = false }
 
     val popularMoviesAdapter = MovieAdapter { moveId, movie ->
@@ -18,19 +18,19 @@ class MovieListViewModel : BaseViewModel() {
     }
 
     fun requestPopularMovies() = viewModelScope.launch {
-        Log.e("XXXX", "startReq")
+        Log.e("XXXX", "startReqMovieList")
 
         loading.value = true
 
         popularMoviesAdapter.movies = mainRepository.getPopularMovies()
         popularMovieNavigatorInterface.setAdapter(popularMoviesAdapter)
-        Log.e("XXXX", "finishReq")
+        Log.e("XXXX", "finishReqMovieList")
 
         loading.value = false
 
     }
 
-    fun setNavigator(nav: PopularMovieAdapterNavigatorInterface) {
+    fun setNavigator(nav: MovieListAdapterNavigatorInterface) {
         this.popularMovieNavigatorInterface = nav
     }
 
