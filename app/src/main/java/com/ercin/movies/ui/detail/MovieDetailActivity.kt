@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ercin.movies.R
 import com.ercin.movies.base.BaseActivity
@@ -30,6 +31,13 @@ class MovieDetailActivity : BaseActivity(), MovieDetailNavigatorInterface {
         viewModelMovieDetail.setDetailNavigator(this)
         viewModelMovieDetail.requestMovieDetail()
 
+        viewModelMovieDetail.loading.observe(this, Observer<Boolean> {
+            if (it)
+                showFullScreenProgressDialog(false)
+            else
+                dismissFullScreenProgressDialog()
+        })
+
     }
 
     override fun showMovieDetail(movieDetail: MovieDetailResponse) {
@@ -45,7 +53,7 @@ class MovieDetailActivity : BaseActivity(), MovieDetailNavigatorInterface {
     }
 
     override fun showVideoPlayer(videoID: String) {
-        Log.e("YYYY","Step-1 VideoID $videoID")
+        Log.e("YYYY", "Step-1 VideoID $videoID")
         val videoDialog = MovieYoutubePlayerDialog.showMovieYoutubePlayerDialog(videoId = videoID)
         videoDialog.show(supportFragmentManager, "videoDialog")
     }
