@@ -14,7 +14,7 @@ import com.ercin.movies.ui.main.MovieAdapter
 import kotlinx.android.synthetic.main.fragment_movies.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class MoviesFragment : BaseFragment(), PopularMovieAdapterNavigatorInterface {
+class MoviesFragment : BaseFragment(), MovieListAdapterNavigatorInterface {
 
     private val myMoviesViewModel: MovieListViewModel by viewModel()
 
