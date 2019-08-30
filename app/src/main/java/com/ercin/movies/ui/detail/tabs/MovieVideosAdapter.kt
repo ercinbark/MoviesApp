@@ -1,4 +1,4 @@
-package com.ercin.movies.ui.detail
+package com.ercin.movies.ui.detail.tabs
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,15 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ercin.movies.R
-import com.ercin.movies.model.movie.MovieResult
 import com.ercin.movies.model.videos.MovieVideoResults
 import com.ercin.movies.util.Constant
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubeThumbnailLoader
 import com.google.android.youtube.player.YouTubeThumbnailView
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 class MovieVideosAdapter(val clickVideoFunction: (String) -> Unit) :
     RecyclerView.Adapter<MovieVideosAdapter.MovieVideoViewHolder>() {

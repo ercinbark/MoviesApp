@@ -1,7 +1,10 @@
 package com.ercin.movies.model.detail
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class MovieDetailResponse(
     @SerializedName("id")
     var id: String,
@@ -24,4 +27,4 @@ data class MovieDetailResponse(
     @SerializedName("runtime")
     var runtime: String
 
-)
+):Parcelable

@@ -1,4 +1,4 @@
-package com.ercin.movies.ui.detail
+package com.ercin.movies.ui.detail.tabs
 
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +10,6 @@ import com.ercin.movies.R
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-import kotlinx.android.synthetic.main.movie_video_player_dialog.*
 
 class MovieYoutubePlayerDialog : DialogFragment() {
     var movieYoutubeId: String = ""
@@ -19,7 +18,8 @@ class MovieYoutubePlayerDialog : DialogFragment() {
         fun showMovieYoutubePlayerDialog(videoId: String): MovieYoutubePlayerDialog {
             val args = Bundle()
             args.putString("movieVideoID", videoId)
-            val movieYoutubePlayerDialog = MovieYoutubePlayerDialog()
+            val movieYoutubePlayerDialog =
+                MovieYoutubePlayerDialog()
             movieYoutubePlayerDialog.arguments = args
             Log.e("YYYY", "Step-2 VideoID : $videoId")
             return movieYoutubePlayerDialog
